@@ -25,10 +25,7 @@
         <!-- <v-chip prepend-icon="mdi-silverware-spoon" color="forth"  variant="outlined" class="me-2">內用</v-chip> -->
         <!-- <v-chip prepend-icon="mdi-shopping-outline" color="forth"  variant="outlined">外帶</v-chip> -->
         <p>
-          始於1965年的發記粉粿冰，是一家位於彰化鹿港的老字號冰店，
-        </p>
-        <p>
-          自從創辦人為了養家活口，開始切起粉粿，不知不覺孩子都養大也成家立業，到現在傳承至第三代，卻還是堅持品項每日純手工製作。
+          以義式料理為主，提供多樣化的餐點，讓您在家也能享受到美味的義大利麵。
         </p>
     </v-col>
   </v-row>

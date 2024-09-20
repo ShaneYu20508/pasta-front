@@ -68,9 +68,9 @@ const drawer = ref(false)
 // 導覽列項目
 const navItems = computed(() => {
   return [
-    { to: '/productintroduce', text: '產品介紹', show: !user.isLogin|| user.isLogin },
+    { to: '/productintroduce', text: '產品介紹', show: !user.isLogin || user.isLogin },
     { to: '/products', text: '快速訂購', show: !user.isLogin || user.isLogin},
-    { to: '/content', text: '聯繫我們', show: !user.isLogin },
+    { to: '/content', text: '聯繫我們', show: !user.isLogin || user.isLogin},
     { to: '/signup', text: '會員', show: !user.isLogin },
     // { to: '/login', text: '登入', icon: 'mdi-login', show: !user.isLogin },
     { to: '/cart', text: '購物車', show: user.isLogin },
