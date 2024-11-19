@@ -15,9 +15,9 @@ VNavigationDrawer(v-model="drawer" temporary location="left" v-if="isMobile")
       VListItemTitle 登出
 //- 導覽列
 VAppBar(color="#008C45")
-  VContainer.d-flex.align-center.w-50
+  VContainer.d-flex.align-center.w-100
     VBtn(to="/" :active="false")
-      VAppBarTitle 
+      VAppBarTitle
         strong 義在家
     VSpacer
     //- 手機板導覽列
@@ -36,7 +36,7 @@ VFooter(class="px-0")
   VRow(class="text-center bg-third" )
     VCol(cols="12")
       strong ©{{ new Date().getFullYear() }} &nbsp; - &nbsp; 義在家 pasta straight home
-        VBtn(v-for="icon in icons" 
+        VBtn(v-for="icon in icons"
         :key="icon"
         class="ms-4"
         :icon="icon.name"
@@ -69,13 +69,13 @@ const drawer = ref(false)
 const navItems = computed(() => {
   return [
     { to: '/productintroduce', text: '產品介紹', show: !user.isLogin || user.isLogin },
-    { to: '/products', text: '快速訂購', show: !user.isLogin || user.isLogin},
-    { to: '/content', text: '聯繫我們', show: !user.isLogin || user.isLogin},
+    { to: '/content', text: '聯繫我們', show: !user.isLogin || user.isLogin },
+    { to: '/products', text: '快速訂購', show: !user.isLogin || user.isLogin },
     { to: '/signup', text: '會員', show: !user.isLogin },
     // { to: '/login', text: '登入', icon: 'mdi-login', show: !user.isLogin },
     { to: '/cart', text: '購物車', show: user.isLogin },
     { to: '/orders', text: '我的訂單', show: user.isLogin },
-    { to: '/admin', text: '管理', show: user.isLogin && user.isAdmin }
+    { to: '/admin/products', text: '管理', show: user.isLogin && user.isAdmin }
   ]
 })
 

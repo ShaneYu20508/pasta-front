@@ -2,8 +2,8 @@
   <v-container class="w-75">
     <!-- <h1 class="text-center">三種麵條任你挑選</h1>
     <v-divider class="mb-6"></v-divider> -->
-    <v-row class="mb-5 mx-auto" style="width: 80%;">
-      <v-col class="text-center left" cols="12" lg="4" v-for="(noodle, i) in noodles" :key="i">
+    <v-row class="mb-5 mx-auto w-100">
+      <v-col class="text-center left" cols="4" v-for="(noodle, i) in noodles" :key="i">
         <h2>{{ noodle.text1 }}</h2>
         <v-img
         width="auto"
@@ -16,7 +16,7 @@
         </v-img>
       </v-col>
     </v-row>
-    <v-row v-for="(item, i) in items" :key="i" class="mt-5 mb-5 mx-auto w-75 right">
+    <v-row v-for="(item, i) in items" :key="i" class="mt-5 mb-5 mx-auto right">
       <v-col cols="12" md="4">
         <v-img
         width="auto"
@@ -43,18 +43,18 @@
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
 
-const noodles =ref([
+const noodles = ref([
   {
     image: new URL('@/assets/noodle-1.jpg', import.meta.url).href,
-    text1:'直麵'
+    text1: '直麵'
   },
   {
     image: new URL('@/assets/noodle-2.jpg', import.meta.url).href,
-    text1:'筆管麵'
+    text1: '筆管麵'
   },
   {
     image: new URL('@/assets/noodle-3.jpg', import.meta.url).href,
-    text1:'寬扁麵'
+    text1: '寬扁麵'
   }
 ])
 
@@ -79,7 +79,7 @@ const items = ref([
     text2: '簡約卻絕對美味的佳品讓每一餐都變得特別。選用新鮮青醬，搭配濃郁的帕瑪森起司和清香的羅勒葉，讓您每一口都感受到義大利的傳統風味與現代美食的完美結合。',
     text3: '經典青醬的迷人風味，搭配上帕瑪森起司的濃郁口感，讓每一口都充滿豐富的層次。',
     text4: '清新草本香氣與帕瑪森的奶香完美融合，令人每餐都能感受到義大利料理的純粹魅力。'
-  },
+  }
 ])
 
 onMounted(() => {

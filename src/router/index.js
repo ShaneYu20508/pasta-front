@@ -93,16 +93,16 @@ const routes = [
     path: '/admin',
     component: () => import('@/layouts/AdminLayout.vue'),
     children: [
-      {
-        path: '',
-        name: 'AdminHome',
-        component: () => import('@/views/admin/HomeView.vue'),
-        meta: {
-          title: '義在家 | 管理',
-          login: true,
-          admin: true
-        }
-      },
+      // {
+      //   path: '',
+      //   name: 'AdminHome',
+      //   component: () => import('@/views/admin/HomeView.vue'),
+      //   meta: {
+      //     title: '義在家 | 管理',
+      //     login: true,
+      //     admin: true
+      //   }
+      // },
       {
         path: 'products',
         name: 'AdminProducts',

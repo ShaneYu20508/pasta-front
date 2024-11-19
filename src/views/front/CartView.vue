@@ -15,7 +15,7 @@ VForm
         template(#[`item.product.noodle`]="{ item }")
           span(v-if="item.product.noodle") {{ item.product.noodle }}
           span(v-else) 無麵條選擇
-          
+
         template(#[`item.quantity`]="{ item }")
           VBtn(variant="text" icon="mdi-minus" color="red" @click="addCart(item.product._id, -1, item.noodle)")
           | {{ item.quantity }}
@@ -27,7 +27,7 @@ VForm
 
     //- 取件人資料
     VRow
-      VCol(cols="12" md="3")
+      VCol(cols="6" md="3")
         VTextField(
           label="取件人姓名"
           prepend-inner-icon="mdi-account-circle-outline"
@@ -35,7 +35,7 @@ VForm
           v-model="name"
           :rules="[rules.required]"
         )
-      VCol(cols="12" md="3")
+      VCol(cols="6" md="3")
         VTextField(
           label="取件人電話"
           prepend-inner-icon="mdi-cellphone"
@@ -52,10 +52,9 @@ VForm
           :rules="[rules.required]"
         )
 
-        
     VCol.d-flex.align-center.justify-space-between(cols="12")
-      p.text-h4 總金額:
-      p.text-h4.text-red NT.{{ total }}
+      p.text-h5 總金額:
+      p.text-h5.text-red NT.{{ total }}
     VCol.text-center(cols="12")
       VBtn(color="green" :disabled="!canCheckout" :loading="isSubmitting" @click="checkout") 結帳
 </template>
@@ -82,13 +81,13 @@ const rules = ref({
 
 const cart = ref([])
 const headers = [
-  { title: '商品圖片', key: 'product.image' },
-  { title: '商品名稱', key: 'product.name' },
-  { title: '麵條種類', key: 'noodle' },
-  { title: '單價', key: 'product.price' },
-  { title: '數量', key: 'quantity' },
-  { title: '總價', key: 'total', value: item => item.product.price * item.quantity },
-  { title: '刪除', key: 'action' }
+  { title: '商品圖片', key: 'product.image', minWidth: '100px' },
+  { title: '商品名稱', key: 'product.name', minWidth: '150px' },
+  { title: '麵條種類', key: 'noodle', minWidth: '120px' },
+  { title: '單價', key: 'product.price', minWidth: '95px' },
+  { title: '數量', key: 'quantity', minWidth: '90px' },
+  { title: '總價', key: 'total', value: item => item.product.price * item.quantity, minWidth: '95px' },
+  { title: '刪除', key: 'action', minWidth: '90px' }
 ]
 
 const total = computed(() => {
@@ -106,7 +105,7 @@ const addCart = async (product, quantity, noodle) => {
     router.push('/login')
     return
   }
-  
+
   try {
     const { data } = await apiAuth.patch('/users/cart', {
       product,
@@ -148,7 +147,7 @@ const isSubmitting = ref(false)
 const checkout = async () => {
   isSubmitting.value = true
   try {
-    await apiAuth.post('/orders',{
+    await apiAuth.post('/orders', {
       name: name.value,
       phone: phone.value,
       address: address.value

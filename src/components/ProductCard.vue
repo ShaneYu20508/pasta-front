@@ -5,7 +5,7 @@ VCard.product-card
       VImg.img-enlarge(:src="image" cover width="100%" height="300")
   div(style="background-color: white; padding: 5px;")
     VForm(
-      :disabled="isSubmitting" 
+      :disabled="isSubmitting"
       @submit.prevent="submit"
     )
       VCardTitle
@@ -17,15 +17,15 @@ VCard.product-card
         :error-messages="noodle.errorMessage.value"
       )
       VTextField(
-        type="number" min="1" 
+        type="number" min="1"
         v-model.number="quantity.value.value"
-        variant="outlined" 
+        variant="outlined"
         placeholder="數量"
       )
       VBtn(
-        type="submit" 
+        type="submit"
         color="primary"
-        prepend-icon="mdi-cart" 
+        prepend-icon="mdi-cart"
         :loading="isSubmitting"
         style="width:100%; height: 50px;"
       ) 加入購物車
@@ -57,7 +57,7 @@ const router = useRouter()
 // 有哪些接收的資料
 const props = defineProps(['_id', 'category', 'description', 'images', 'name', 'price', 'sell'])
 
-const noodles = ['直麵','筆管麵','寬扁麵']
+const noodles = ['直麵', '筆管麵', '寬扁麵']
 
 // 自己做的加入購物車
 const product = ref({
@@ -80,9 +80,8 @@ const quantity = useField('quantity')
 const noodle = useField('noodle')
 
 const submit = handleSubmit(async (values) => {
+// console.log('Noodle:', values.noodle)
 
-  // console.log('Noodle:', values.noodle)  
-  
   if (!user.isLogin) {
     createSnackbar({
       text: '請先登入再加入購物車',
