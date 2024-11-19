@@ -1,5 +1,5 @@
 <template lang="pug">
-VContainer
+VContainer.w-75
   VRow
     VCol(cols="12")
       h1.text-center 商品管理
@@ -222,12 +222,12 @@ const tablePage = ref(1)
 const tableProducts = ref([])
 // 表格欄位設定
 const tableHeaders = [
-  { title: '圖片', align: 'center', sortable: false, key: 'image' },
-  { title: '名稱', align: 'center', sortable: true, key: 'name' },
-  { title: '價格', align: 'center', sortable: true, key: 'price' },
-  { title: '分類', align: 'center', sortable: true, key: 'category' },
-  { title: '上架', align: 'center', sortable: true, key: 'sell' },
-  { title: '編輯', align: 'center', sortable: false, key: 'edit' }
+  { title: '圖片', align: 'center', sortable: false, key: 'image', minWidth: '90px' },
+  { title: '名稱', align: 'center', sortable: true, key: 'name', minWidth: '125px' },
+  { title: '價格', align: 'center', sortable: true, key: 'price', minWidth: '90px' },
+  { title: '分類', align: 'center', sortable: true, key: 'category', minWidth: '90px' },
+  { title: '上架', align: 'center', sortable: true, key: 'sell', minWidth: '90px' },
+  { title: '編輯', align: 'center', sortable: false, key: 'edit', minWidth: '90px' }
 ]
 // 表格載入狀態
 const tableLoading = ref(true)

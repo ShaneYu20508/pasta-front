@@ -2,8 +2,8 @@
 VContainer
   VRow
     VCol(cols="12")
-      h1 訂單
-    VCol(cols="12")
+      h1.text-center 訂單
+    VCol.mx-auto(cols="12")
       VDataTable(:items="orders" :headers="headers")
         template(#[`item.createdAt`]="{ item }")
           | {{ new Date(item.createdAt).toLocaleString() }}
@@ -23,9 +23,9 @@ const createSnackbar = useSnackbar()
 
 const orders = ref([])
 const headers = [
-  { title: '訂單編號', key: '_id' },
-  { title: '下訂日期', key: 'createdAt' },
-  { title: '訂單內容', key: 'cart', sortable: false },
+  { title: '訂單編號', key: '_id', minWidth: '200px' },
+  { title: '下訂日期', key: 'createdAt', minWidth: '150px' },
+  { title: '訂單內容', key: 'cart', sortable: false, minWidth: '190px' },
   {
     title: '總金額',
     key: 'price',
@@ -33,7 +33,8 @@ const headers = [
       return item.cart.reduce((total, current) => {
         return total + current.quantity * current.product.price
       }, 0)
-    }
+    },
+    minWidth: '95px'
   }
 ]
 

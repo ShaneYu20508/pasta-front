@@ -9,6 +9,7 @@ VContainer
       p ${{ product.price }}
       p(style="white-space: pre;") {{ product.description }}
       VForm(:disabled="isSubmitting" @submit.prevent="submit")
+        VSelect(label="麵條種類" v-model="noodle.value.value" :items = "noodles" :error-messages="noodle.errorMessage.value")
         VTextField(type="number" min="0" v-model.number="quantity.value.value" :error-messages="quantity.errorMessage.value")
         VBtn(type="submit" prepend-icon="mdi-cart" :loading="isSubmitting") 加入購物車
 VOverlay.align-center.justify-center.text-center(:model-value="!product.sell" persistent)
@@ -31,6 +32,8 @@ const { api, apiAuth } = useApi()
 const createSnackbar = useSnackbar()
 const user = useUserStore()
 
+const noodles = ['直麵', '筆管麵', '寬扁麵']
+
 const product = ref({
   _id: '',
   name: '',
@@ -42,15 +45,25 @@ const product = ref({
 })
 
 const schema = yup.object({
-  quantity: yup.number().typeError('缺少數量').required('缺少數量').min(1, '數量最小為 1')
+  quantity: yup
+    .number()
+    .typeError('缺少數量')
+    .required('缺少數量')
+    .min(1, '數量最小為 1'),
+  noodle: yup
+    .string()
+    .typeError('缺少麵條種類')
+    .required('缺少麵條種類')
 })
 const { isSubmitting, handleSubmit } = useForm({
   validationSchema: schema,
   initialValues: {
+    noodle: '直麵',
     quantity: 1
   }
 })
 const quantity = useField('quantity')
+const noodle = useField('noodle')
 
 const submit = handleSubmit(async (values) => {
   if (!user.isLogin) {
@@ -60,7 +73,8 @@ const submit = handleSubmit(async (values) => {
   try {
     const { data } = await apiAuth.patch('/users/cart', {
       product: product.value._id,
-      quantity: values.quantity
+      quantity: values.quantity,
+      noodle: values.noodle
     })
     user.cart = data.result
     createSnackbar({

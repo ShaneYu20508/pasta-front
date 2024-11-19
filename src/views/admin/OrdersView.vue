@@ -23,13 +23,13 @@ const createSnackbar = useSnackbar()
 
 const orders = ref([])
 const headers = [
-  { title: '訂單編號', key: '_id' },
+  { title: '訂單編號', key: '_id', minWidth: '200px' },
   // { title: '訂購帳號', key: 'user.account' },
-  { title: '姓名', key: 'name' },
-  { title: '電話', key: 'phone' },
-  { title: '寄件地址', key: 'address' },
-  { title: '下訂日期', key: 'createdAt' },
-  { title: '訂單內容', key: 'cart', sortable: false },
+  { title: '姓名', key: 'name', minWidth: '90px' },
+  { title: '電話', key: 'phone', minWidth: '90px' },
+  { title: '寄件地址', key: 'address', minWidth: '200px' },
+  { title: '下訂日期', key: 'createdAt', minWidth: '150px' },
+  { title: '訂單內容', key: 'cart', sortable: false, minWidth: '190px' },
   {
     title: '金額',
     key: 'price',
@@ -37,7 +37,8 @@ const headers = [
       return item.cart.reduce((total, current) => {
         return total + current.quantity * current.product.price
       }, 0)
-    }
+    },
+    minWidth: '95px'
   }
 ]
 

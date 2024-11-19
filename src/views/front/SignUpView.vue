@@ -1,6 +1,6 @@
 <!-- eslint-disable semi -->
 <template>
-  <v-card class="mx-auto my-0 my-sm-6" max-width="500"  elevation="4">
+  <v-card class="mx-auto my-0 mt-5 my-sm-6 w-75" max-width="500" elevation="4">
     <v-tabs
       v-model="tab"
       color="forth"

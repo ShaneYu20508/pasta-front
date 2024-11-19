@@ -4,10 +4,10 @@ VContainer.w-75
     VCol(cols="12")
       h1.text-center 商品資訊
     VDivider
-    VCol(cols="12" md="6" lg="3" v-for="product in products" :key="product._id")
+    VCol(cols="12" sm="6" md="4" lg="3" v-for="product in products" :key="product._id")
       ProductCard(v-bind="product")
 </template>
-  
+
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
 import { useApi } from '@/composables/axios'
