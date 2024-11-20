@@ -1,5 +1,5 @@
 <template>
-  <v-container class="w-75">
+  <v-container class="w-100">
     <!-- <h1 class="text-center">三種麵條任你挑選</h1>
     <v-divider class="mb-6"></v-divider> -->
     <v-row class="mb-5 mx-auto w-100">
